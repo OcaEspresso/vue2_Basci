@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">  
+    <ul>  
+      <template v-for="item in items" :key="item.id">  
+        <li>{{ item.msg }}</li>  
+        <li class="divider" role="presentation"></li>  
+      </template>  
+    </ul>  
+  </div>  
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>  
+  <script>  
+    new Vue({  
+      el: '#app',  
+      data: {  
+        items: [  
+          { id: 1, msg: '消息 1' },  
+          { id: 2, msg: '消息 2' },  
+          { id: 3, msg: '消息 3' }  
+        ]  
+      }  
+    });  
+  </script>  
+  
+  <style>  
+    .divider {  
+      height: 1px;  
+      background-color: #ccc;  
+      margin: 5px 0;  
+    }  
+  </style>
+  
+</body>
+</html>

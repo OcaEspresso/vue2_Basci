@@ -1,0 +1,116 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Blog Post Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <div id="app">
+      <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:title="post.title"
+        v-bind:content="post.content"
+        v-bind:published-at="post.publishedAt"
+        v-bind:comments="post.comments"
+      ></blog-post>
+    </div>
+
+    <script>
+      Vue.component('blog-post', {
+        props: ['title', 'content', 'publishedAt', 'comments'],
+        template: `
+          <div class="blog-post">
+            <h3>{{ title }}</h3>
+            <div v-html="content"></div>
+            <p>Published at: {{ publishedAt }}</p>
+            <ul>
+              <li v-for="(comment, index) in comments" :key="index">{{ comment }}</li>
+            </ul>
+          </div>
+        `
+      });
+
+      new Vue({
+        el: '#app',
+        data: {
+          posts: [
+            {
+              id: 1,
+              title: 'My journey with Vue',
+              content: '<p>Here is the content of my journey with Vue.</p>',
+              publishedAt: '2024-08-14',
+              comments: ['Great post!', 'I love Vue too!']
+            },
+            {
+              id: 2,
+              title: 'Blogging with Vue',
+              content: '<p>Here is the content about blogging with Vue.</p>',
+              publishedAt: '2024-08-13',
+              comments: ['Thanks for sharing!', 'Very informative.']
+            }
+          ]
+        }
+      });
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Blog Post Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <div id="app">
+      <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+      ></blog-post>
+    </div>
+
+    <script>
+      Vue.component('blog-post', {
+        props: ['post'],
+        template: `
+          <div class="blog-post">
+            <h3>{{ post.title }}</h3>
+            <div v-html="post.content"></div>
+            <p>Published at: {{ post.publishedAt }}</p>
+            <ul>
+              <li v-for="(comment, index) in post.comments" :key="index">{{ comment }}</li>
+            </ul>
+          </div>
+        `
+      });
+
+      new Vue({
+        el: '#app',
+        data: {
+          posts: [
+            {
+              id: 1,
+              title: 'My journey with Vue',
+              content: '<p>Here is the content of my journey with Vue.</p>',
+              publishedAt: '2024-08-14',
+              comments: ['Great post!', 'I love Vue too!']
+            },
+            {
+              id: 2,
+              title: 'Blogging with Vue',
+              content: '<p>Here is the content about blogging with Vue.</p>',
+              publishedAt: '2024-08-13',
+              comments: ['Thanks for sharing!', 'Very informative.']
+            }
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>

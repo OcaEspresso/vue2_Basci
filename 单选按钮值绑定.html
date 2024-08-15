@@ -1,0 +1,26 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Vue.js Radio Button Example</title>  
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>  
+</head>  
+<body>  
+    <div id="app">  
+        <input type="radio" v-model="pick" v-bind:value="a"> {{ a }}<br>  
+        <input type="radio" v-model="pick" v-bind:value="b"> {{ b }}<br>  
+        
+        <p>当选中时: {{ pick === a }}</p>  
+    </div>  
+
+    <script>  
+        new Vue({  
+            el: '#app',  
+            data: {  
+                pick: '', // Initialize selected value  
+                a: '选项 A', // Value for first radio button  
+                b: '选项 B'  // Value for second radio button  
+            }  
+        });  
+    </script>  
+</body>  
+</html>

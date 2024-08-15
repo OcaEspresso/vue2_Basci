@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <!-- 单选按钮 -->
+    <input type="radio" v-model="picked" value="a"> a
+
+    <!-- 复选框 -->
+    <input type="checkbox" v-model="toggle"> Toggle
+
+    <!-- 下拉列表 -->
+    <select v-model="selected">
+      <option value="abc">ABC</option>
+    </select>
+
+    <!-- 显示结果 -->
+    <p>Picked: {{ picked }}</p>
+    <p>Toggle: {{ toggle }}</p>
+    <p>Selected: {{ selected }}</p>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+
+new Vue({
+            el: '#app',
+            data: {
+                picked: '',
+                toggle: false,
+                selected: ''
+            }
+        });
+
+  </script>
+</body>
+</html>

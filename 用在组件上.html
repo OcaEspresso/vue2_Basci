@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js Dynamic Class Binding in Components Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <my-component :class="{ active: isActive }" class="baz boo"></my-component>
+  </div>
+
+  <script>
+    // 定义组件
+    Vue.component('my-component', {
+      template: '<p class="foo bar">Hi</p>'
+    });
+
+    // 创建 Vue 实例
+    new Vue({
+      el: '#app',
+      data: {
+        isActive: false
+      }
+    });
+  </script>
+</body>
+</html>

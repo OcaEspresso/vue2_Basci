@@ -1,0 +1,57 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Vue.js 是非问题应用</title>  
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>  
+<body>  
+    <div id="watch-example">  
+        <p>  
+            提问是非问题：  
+            <input v-model="question">  
+        </p>  
+        <p>{{ answer }}</p>  
+    </div>  
+
+    <script>  
+    var watchExampleVM = new Vue({  
+        el: '#watch-example',  
+        data: {  
+            question: '',  
+            answer: '在您提问之前我无法给出答案！'  
+        },  
+        watch: {  
+            // 观察`question`变量的变化  
+            question: function (newQuestion, oldQuestion) {  
+                this.answer = '等待您停止输入...'  
+                this.debouncedGetAnswer()  
+            }  
+        },  
+        created: function () {  
+            // 初始化防抖动函数  
+            this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)  
+        },  
+        methods: {  
+            getAnswer: function () {  
+                // 如果问题没有问号  
+                if (this.question.indexOf('?') === -1) {  
+                    this.answer = '问题通常包含问号。;-）'  
+                    return  
+                }  
+                this.answer = '思考中...'  
+                var vm = this  
+                axios.get('https://yesno.wtf/api')  
+                    .then(function (response) {  
+                        vm.answer = _.capitalize(response.data.answer)  
+                    })  
+                    .catch(function (error) {  
+                        vm.answer = '错误！无法访问 API。 ' + error  
+                    })  
+            }  
+        }  
+    })  
+    </script>  
+</body>  
+</html>

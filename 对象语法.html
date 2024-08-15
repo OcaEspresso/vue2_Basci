@@ -1,0 +1,43 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js Dynamic Class Binding Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <div
+      class="static"
+      v-bind:class="{ active: isActive, 'text-danger': hasError }"
+    >
+      This is a dynamic class example.
+    </div>
+
+    <div v-bind:class="classObject">
+      This is another dynamic class example using a computed property.
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        isActive: true,
+        hasError: false,
+        error: null
+      },
+      computed: {
+        classObject: function () {
+          return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

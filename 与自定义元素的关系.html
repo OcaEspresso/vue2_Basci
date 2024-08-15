@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Component Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Slot API 示例 -->
+    <my-component>
+     
+    </my-component>
+
+    <!-- is attribute 示例 -->
+    <component :is="currentComponent"></component>
+    <button @click="currentComponent = 'component-a'">加载 A 组件</button>
+    <button @click="currentComponent = 'component-b'">加载 B 组件</button>
+  </div>
+
+  <script>
+    // 定义具有插槽的组件
+    Vue.component('my-component', {
+      template: `
+        <div>
+          <slot></slot>
+        </div>
+      `
+    });
+
+    // 定义简单的组件 A 和组件 B
+    Vue.component('component-a', {
+      template: '<div>Component A</div>'
+    });
+
+    Vue.component('component-b', {
+      template: '<div>Component B</div>'
+    });
+
+    // 创建 Vue 实例
+    new Vue({
+      el: '#app',
+      data: {
+        currentComponent: 'component-a'
+      }
+    });
+  </script>
+</body>
+</html>
